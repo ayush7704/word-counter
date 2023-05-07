@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(90deg, #a845dbed, #00f2fd8a);
+            font-family: math;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h2:first-of-type {
+            color: transparent;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(to top, #004eff, #ff1800);
+            text-align: center;
+            font-size: 2.4rem;
+            margin-bottom: 3px;
+        }
+
+        textarea {
+            width: 100%;
+            resize: none;
+            padding: 10px;
+            font-size: 1.3rem;
+        }
+
+        h2:nth-of-type(2) {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>word counter from ayush </h2>
+        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+        <h2><span id="char">0</span><span id="word">0</span></h2>
+    </div>
+
+    <script>
+        document.getElementById('textarea').addEventListener('input', function () {
+            let char = document.getElementById('char');
+            let word = document.getElementById('word');
+
+            let value = this.value;
+            let valuel = value.length;
+            let values = value.split(' ')
+            char.innerHTML = (valuel - (values.length - 1)) <= 1 ? valuel - (values.length - 1) + ' character' : valuel - (values.length - 1) + ' characters'
+
+
+            let valuesf = values.filter((value) => value != '')
+            word.innerHTML = valuesf.length <= 1 ? valuesf.length + ' word' : valuesf.length + ' words'
+
+        })
+    </script>
+</body>
+
+</html>
