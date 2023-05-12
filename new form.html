@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>form</title>
+    <title>latest form</title>
     <style>
         * {
             margin: 0;
@@ -54,6 +54,7 @@
             margin: 3px 0;
             color: red;
             font-family: monospace;
+            display: none;
         }
 
         a {
@@ -70,11 +71,12 @@
 
         span {
             position: absolute;
-            top: 11%;
-            right: 4px;
+            top: 14%;
+            right: 2px;
             color: green;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             display: none;
+            cursor: pointer;
         }
 
         @media screen and (max-width:500px) {
@@ -88,151 +90,128 @@
 <body>
     <form action="" name="myform" onsubmit="return formcheck()">
         <div class="inputcontainer">
-            <input type="text" id="name" name="email" placeholder="Email" autofocus><span
-                onclick="rmv('email')">&#x2714;</span>
+            <input type="text" id="name" name="email" placeholder="Email" autofocus autocomplete=""><span
+                onclick="remove('email')">&#x2714;</span>
         </div>
         <p></p>
         <div class="inputcontainer">
             <input type="password" name="password" id="password" placeholder="Password"><span
-                onclick="rmv('password')">&#x2714;</span>
+                onclick="remove('password')">&#x2714;</span>
         </div>
         <p></p>
         <input type="submit" value="Log In">
         <a href="#">Forgot Password?</a>
     </form>
     <script>
+        let errors = document.querySelectorAll('p');
+        let spans = document.querySelectorAll('span');
+        let email = document.myform.email;
         let password = document.myform.password;
-        let spans = document.getElementsByTagName('span');
-        let error = document.getElementsByTagName('p')
 
-        // spans.forEach(element => {
-        //     element.addEventListener('click',function rmv(e){ 
-        //         if(e === 'email'){
-        //             email.value =''
-        //         }
-        //         if(e === 'password'){
-        //             password.value =''
-        //         }
-        // });
-        // })
-        function rmv(e) {
-            if (e === 'email' && spans[0].innerHTML !== '&#x2714') {
-                console.log(spans[0].innerText)
-                email.value = ''
-                console.log('pass')
+        email.addEventListener('input', function () {
+            for (x of errors) {
+                x.style.cssText = 'display:none;'
             }
-            if (e === 'password') {
+            if (email.value.includes('@') && email.value[email.value.length - 4] == '.' && email.value.split(' ').length - 1 != 1 && email.value.substr(-4, 4) === '.com') {
+                spans[0].innerHTML = '&#x2714;'
+                spans[0].style.cssText = 'display:block'
+                email.style.cssText = 'border-color:green;'
+            }
+            else {
+                spans[0].style.cssText = ''
+                email.style.cssText = ''
+            }
+        })
+        password.addEventListener('input', function () {
+            for (x of errors) {
+                x.style.cssText = 'display:none;'
+            }
+            if (password.value.length >= 8) {
+                spans[1].innerHTML = '&#x2714;'
+                spans[1].style.cssText = 'display:block';
+                password.style.cssText = 'border-color:green;'
+            }
+            else {
+                spans[1].style.cssText = ''
+                password.style.cssText = ''
+            }
+        })
+
+        function remove(e) {
+            let num = email.value.includes('@') && email.value[email.value.length - 4] == '.' && email.value.split(' ').length - 1 != 1 && email.value.substr(-4, 4) === '.com' ? 1 : 0;
+            if (num == 0 && e == 'email') {
+                email.value = ''
+            }
+            let num2 = password.value.length >= 8 ? 1 : 0;
+            if (num2 == 0 && e == 'password') {
                 password.value = ''
             }
         }
 
-        let email = document.myform.email;
-        email.addEventListener('input', function () {
-            if (this.value.includes('@') && this.value[this.value.length - 4] === '.') {
-                this.style.cssText = 'border-color:green'
-                spans[0].innerHTML = '&#x2714;'
-                spans[0].style.cssText = 'display:block'
-                error[0].style.cssText = 'display:none'
-            }
-            else {
-                this.style.cssText = ''
-                spans[0].style.cssText = ''
-            }
-        })
-        
-        password.addEventListener('input', function () {
-            console.log(this.value.length)
-
-            if (this.value.length >= 8) {
-                this.style.cssText = 'border-color:green'
-                spans[1].innerHTML = '&#x2714;'
-                spans[1].style.cssText = 'display:block'
-                error[1].style.cssText = 'display:none'
-            }
-            else {
-                this.style.cssText = ''
-                spans[1].style.cssText = ''
-            }
-        });
-
         function formcheck() {
-            let email = document.myform.email;
-            let password = document.myform.password.value;
-            let error = document.getElementsByTagName('p')
-
-            console.log(email.value.split(' ').length - 1)
-            if (email.value.split(' ').length - 1 >= 1) {
-                error[0].innerHTML = 'no space allowed in email'
-                error[0].style.cssText = 'display:block'
-                for (x of spans) {
-                    x.innerHTML = '&#10060;'
-                    x.style.cssText = 'display:block'
+            if (email.value === '' || password.value === '' || !email.value.includes('@') || email.value[email.value.length - 4] !== '.' || email.value.substr(-4, 4) != '.com' || email.value.split(' ').length - 1 >= 1 || password.value.length < 8) {
+                if (email.value === '' && password.value === '') {
+                    for (x of spans) {
+                        x.innerHTML = '&#10060'
+                        x.style.cssText = 'display:block;'
+                    }
+                    for (x of errors) {
+                        x.style.cssText = 'display:block;'
+                    }
+                    email.style.cssText = 'border-color:red;'
+                    password.style.cssText = 'border-color:red;'
+                    errors[0].innerHTML = 'write email please'
+                    errors[1].innerHTML = 'write password please'
+                    return false
                 }
-                email.style.cssText = 'border-color:red'
-                return false
-            }
-
-            if (email.value === '' && password === '') {
-                error[0].innerHTML = 'you did not write any email'
-                error[1].innerHTML = 'Write a password please'
-                // spans.forEach(element => {
-                //     element.innerHTML='&#10060;'
-                //     element.style.cssText='display:block'
-                // });
-                for (x of spans) {
-                    x.innerHTML = '&#10060;'
-                    x.style.cssText = 'display:block'
+                if (email.value === '') {
+                    errors[0].style.cssText = 'display:block;'
+                    errors[0].innerHTML = 'write email please'
+                    email.style.cssText = 'border-color:red;'
+                    spans[0].innerHTML = '&#10060;'
+                    spans[0].style.cssText = 'display:block'
+                    return false
                 }
-                email.style.cssText = 'border-color:red'
-                document.getElementById('password').style.borderColor = 'red'
-                console.log(spans)
-                return false
-            }
-            else if (email.value === '') {
-                error[0].innerHTML = 'you did not write any email'
-                error[0].style.cssText = 'display:block'
-                document.myform.email.style.cssText = 'border-color:red'
-                spans[0].innerHTML = '&#10060;'
-                spans[0].style.cssText = 'display:block'
-                return false
-            }
-            else if (!email.value.includes('@') || email.value[email.value.length - 4] != '.') {
-                error[0].innerHTML = 'Write proper email please';
-                spans[0].style.cssText = 'display:block'
-                spans[0].innerHTML = '&#10060;'
-                document.myform.email.style.cssText = 'border-color:red'
-                // console.log(email.value[email.value.length - 4])
-                return false
-            }
-            else if (email.value != '' && email.value.includes('@') && email.value[email.value.length - 4] === '.') {
-                spans[0].style.cssText = 'display:block'
+                else if (!email.value.includes('@') || email.value.substr(-4, 4) != '.com' || email.value[email.value.length - 4] !== '.' || email.value.split(' ').length - 1 >= 1) {
+                    errors[0].style.cssText = 'display:block;'
+                    email.style.cssText = 'border-color:red;'
+                    spans[0].innerHTML = '&#10060;'
+                    spans[0].style.cssText = 'display:block'
+
+                    if (!email.value.includes('@') && email.value[email.value.length - 4] !== '.') {
+                        errors[0].innerHTML = 'write proper email'
+                    }
+                    else if (email.value.split(' ').length - 1 >= 1) {
+                        errors[0].innerHTML = 'no space allowed'
+                    }
+                    else if (!email.value.includes('@')) {
+                        errors[0].innerHTML = '@ must be include in email'
+                        console.log('@ must be include in email')
+                    }
+                    else if (email.value.substr(-4, 4) != '.com') {
+                        errors[0].innerHTML = 'write proper email please'
+                    }
+                    return false
+                }
+                if (password.value === '' || password.value.length < 8) {
+                    errors[1].style.cssText = 'display:block;'
+                    spans[1].style.cssText = 'display:block'
+                    spans[1].innerHTML = '&#10060;'
+                    password.style.cssText = 'border-color:red;'
+                    if (password.value === '') {
+                        errors[1].innerHTML = 'write password please'
+                        return false
+
+                    } else if (password.value.length < 8) {
+                        errors[1].innerHTML = 'password must be greater or equal than 8'
+                        return false
+                    }
+                }
             }
             else {
-                error[0].style.cssText = 'display:none'
-                document.myform.email.style.cssText = 'border-color:green'
+                alert('form submitted successfully')
+                return true
             }
-            if (password === '') {
-                error[1].innerHTML = 'Write a password please'
-                document.myform.password.style.cssText = 'border-color:red'
-                spans[1].style.cssText = 'display:block'
-                spans[1].innerHTML = '&#10060;'
-                return false
-            }
-            else if (password.length < 8) {
-                error[1].innerHTML = 'Password length should be greater or equal 8'
-                spans[1].style.cssText = 'display:block'
-                spans[1].innerHTML = '&#10060;'
-                document.myform.password.style.cssText = 'border-color:red'
-                return false
-            }
-            else {
-                error[1].style.cssText = 'display:none'
-                document.myform.password.style.cssText = 'border-color:green'
-                spans[1].style.cssText = 'display:none'
-            }
-            alert('logged in successfully')
-            console.log()
-            return true
         }
     </script>
 </body>
