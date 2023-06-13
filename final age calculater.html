@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ayush.Age.Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+
+        body {
+            color: white;
+            background-image: linear-gradient(45deg, #677699, #000000);
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        header {
+            box-shadow: 0px 1px 6px 2px gray;
+            font-size: 1.4rem;
+            background-color: #0e4878;
+            padding: 14px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 7px;
+            font-family: system-ui;
+        }
+
+        .container {
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        form {
+            width: 50dvw;
+            height: auto;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 10px;
+            margin: 13px 0;
+            width: 100%;
+            border-radius: 8px;
+            outline: none;
+            /* border: 0.2px solid black; */
+            box-shadow: 0 2px 4px 0px gray;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .flex span:first-child {
+            color: #7079ff;
+        }
+
+        .result {
+            display: flex;
+            justify-content: space-around;
+            border: 1px solid white;
+            border-radius: 9px;
+            text-align: center;
+            padding: 8px;
+            margin: 7px 0;
+        }
+
+        .age p:first-child {
+            color: #7079ff;
+        }
+
+        .heading {
+            color: #7079ff;
+            font-size: 1.4rem;
+        }
+
+        .div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            flex: 1 1 200px;
+        }
+
+        input:active {
+            transform: translate(0, 4px);
+            box-shadow: 0 0 0;
+        }
+
+        .error {
+            display: none;
+            color: red;
+            margin: 5px 0;
+        }
+
+        .radial {
+            position: absolute;
+            left: -34%;
+            bottom: -14%;
+            overflow: hidden;
+            transform: rotate(64deg);
+            border-radius: 50%;
+            background-image: linear-gradient(to top, #00fff0 0%, #7079ff 100%);
+            width: 260px;
+            height: 260px;
+        }
+
+        @media screen and (max-width:600px) {
+            form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>Age Calculator By Ayush</header>
+    <div class="container">
+        <form action="" onsubmit="return calculator()">
+            <h3 class="flex">
+                <span>Date of Birth</span>
+                <span>day</span>
+            </h3>
+            <input type="date" id="dob" placeholder="hello">
+
+            <h3 class="flex">
+                <span>Today's Date</span>
+                <span>day</span>
+            </h3>
+            <input type="date" id="tilldate">
+            <div class="div">
+                <input type="submit" value="CALCULATE">
+                <input type="reset" value="CLEAR" onclick="doclear()">
+            </div>
+        </form>
+        <p class="error"></p>
+        <p class="heading">Age</p>
+        <h3 class="result">
+            <div class="age">
+                <p>Years</p>
+                <p id="years">0</p>
+            </div>
+            <div class="age">
+                <p>Months</p>
+                <p id="months">0</p>
+            </div>
+            <div class="age">
+                <p>Days</p>
+                <p id="days">0</p>
+            </div>
+        </h3>
+        <!-- <p class="heading">Next Birthday</p>
+        <h3 class="result">
+            <div class="age">
+                <p>Months</p>
+                <p id="nextmonths">0</p>
+            </div>
+            <div class="age">
+                <p>Days</p>
+                <p id="nextdays">0</p>
+            </div>
+        </h3> -->
+    </div>
+    <div class="radial"></div>
+    <script>
+        const years = document.getElementById('years')
+        const months = document.getElementById('months')
+        const days = document.getElementById('days')
+
+
+        function calculator(event) {
+            const dob = new Date(document.getElementById('dob').value);
+            const tilldate = new Date(document.getElementById('tilldate').value);
+            const nextmonths = document.getElementById('nextmonths')
+            const nextdays = document.getElementById('nextdays')
+            const caldate = new Date();
+
+            caldate.setFullYear(tilldate.getFullYear() - dob.getFullYear())
+            caldate.setMonth(tilldate.getMonth() - dob.getMonth())
+            caldate.setDate(tilldate.getDate() - dob.getDate())
+
+            console.log(dob.toString())
+            if (dob == 'Invalid Date' || tilldate == 'Invalid Date' || dob == tilldate) {
+                // if Date is not filled 
+                dob == 'Invalid Date' ? document.querySelector('.error').innerHTML = 'Choose Your Dob please' : document.querySelector('.error').innerHTML = 'Choose A Date To Compare';
+                document.querySelector('.error').style.cssText = 'display:block;'
+                return false
+            }
+            else if (caldate.getFullYear() <= -1) {
+                document.querySelector('.error').innerHTML = 'Date of birth needs to be earlier than today\'s date';
+                document.querySelector('.error').style.cssText = 'display:block;'
+                years.innerHTML = 0;
+                months.innerHTML = 0;
+                days.innerHTML = 0;
+            }
+            else {
+                document.querySelector('.error').style.cssText = 'display:none;'
+                const year = caldate.getFullYear();
+                const month = caldate.getMonth();
+                let day = caldate.getDate();
+
+                years.innerHTML = year;
+                months.innerHTML = month;
+                days.innerHTML = day;
+                return false
+            }
+
+            console.log(dob)
+            console.log(tilldate)
+            // nextmonths.innerHTML = dob.getMonth() - tilldate.getMonth();
+            // nextdays.innerHTML = dob.getDate() - tilldate.getDate();
+            return false
+        }
+        function doclear() {
+            document.querySelector('.error').style.cssText = 'display:none;'
+            years.innerHTML = 0;
+            months.innerHTML = 0;
+            days.innerHTML = 0;
+        }
+    </script>
+</body>
+
+</html>
