@@ -199,9 +199,9 @@
                 // if Date is not filled 
                 dob == 'Invalid Date' ? document.querySelector('.error').innerHTML = 'Choose Your Dob please' : document.querySelector('.error').innerHTML = 'Choose A Date To Compare';
                 document.querySelector('.error').style.cssText = 'display:block;'
-                return false
             }
             else if (caldate.getFullYear() <= -1) {
+                // if Date is equal or dob is greater than today's date
                 document.querySelector('.error').innerHTML = 'Date of birth needs to be earlier than today\'s date';
                 document.querySelector('.error').style.cssText = 'display:block;'
                 years.innerHTML = 0;
@@ -217,13 +217,7 @@
                 years.innerHTML = year;
                 months.innerHTML = month;
                 days.innerHTML = day;
-                return false
             }
-
-            console.log(dob)
-            console.log(tilldate)
-            // nextmonths.innerHTML = dob.getMonth() - tilldate.getMonth();
-            // nextdays.innerHTML = dob.getDate() - tilldate.getDate();
             return false
         }
         function doclear() {
