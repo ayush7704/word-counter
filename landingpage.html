@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forall a tech</title>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
+    <link rel="shortcut icon" href="/for all logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
     <style>
         * {
             margin: 0;
@@ -215,7 +216,7 @@
         }
 
         .icons {
-            font-size: 81px;
+            font-size: 50px;
             margin-bottom: 13px;
         }
 
@@ -238,18 +239,23 @@
 
         .ourteam {
             text-align: center;
-            padding: 30px 14px 0;
+            padding: 30px 14px;
         }
 
         .team {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+            gap: 2px;
+            margin-top: 2px;
 
         }
 
         .members {
             padding: 10px;
-            transition: all 0.4s linear;
+            /* transition: all 0.4s linear; */
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s;
         }
 
         .grey {
@@ -260,7 +266,6 @@
 
         .members:hover {
             box-shadow: 0 0 3px 1px blue;
-            padding: 15px;
             background: white;
             border-radius: 14px;
         }
@@ -326,7 +331,6 @@
             border-radius: 7px 63px 0 0;
         }
 
-        .serviceschallenges {}
 
         .textandbtn {
             display: grid;
@@ -350,12 +354,8 @@
             border-radius: 23px 23px 0 0;
             display: grid;
             transition: 0.3s linear;
-            box-shadow: 0 8px 12px 2px #808080b3;
+            /* box-shadow: 0 8px 12px 2px #808080b3; */
         }
-
-        /* .challenge:hover {
-            box-shadow: 0 8px 12px 2px #808080b3;
-        } */
 
         .challenge img {
             background-position: center;
@@ -387,7 +387,13 @@
         }
 
         .slide {
-            animation: slide 1s linear;
+            animation: slide 2s linear;
+            z-index: 33;
+        }
+
+        .slideright {
+            animation: slideright 2s linear;
+            z-index: 33;
         }
 
         .opacity {
@@ -401,12 +407,13 @@
         .contactcontainer {
             background-color: #0a0f32;
             color: white;
+            padding: 15px 0;
         }
 
         .contact {
             display: flex;
             padding: 0 29px;
-            align-items: self-end;
+            align-items: center;
             flex-wrap: wrap;
         }
 
@@ -426,9 +433,6 @@
             margin: auto;
             padding: 10px;
             width: 90%;
-            /* background-color: rbga(255, 255, 255, 0.1); */
-            /* #646464 */
-            /* #3bb5c9 */
             color: white;
             background: rgb(255 255 255 / 10%);
             backdrop-filter: blur(20px);
@@ -489,17 +493,109 @@
             color: red;
         }
 
+        .none {
+            display: none;
+        }
 
+        .block {
+            display: block;
+        }
+
+        .d-grid {
+            display: grid;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .cros {
+            display: none;
+            margin-left: auto;
+            width: 30px;
+        }
+
+        .span {
+            position: relative;
+            display: block;
+        }
+
+        .span::before,
+        .span::after,
+        .span {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+        }
+
+        .span::before,
+        .span::after {
+            content: '';
+            position: absolute;
+        }
+
+        .span::before {
+            top: var(--topheight, -8px);
+            transform: rotate(var(--before, 0deg));
+        }
+
+        .span::after {
+            bottom: var(--bottomheight, -8px);
+            transform: rotate(var(--after, 0deg));
+        }
+
+        .add {
+            grid-area: 2 / 1 / span 1 / span 2;
+            justify-self: baseline;
+            text-align: justify;
+            animation: updown 0.3s linear 0s 1 alternate forwards;
+        }
 
         @keyframes slide {
             0% {
+                left: -200px;
                 position: relative;
-                left: -400px;
+            }
+
+            50% {
+                left: -100px;
+                position: relative;
+            }
+
+            100% {
+                left: 0px;
+                position: relative;
+            }
+
+        }
+
+        @keyframes slideright {
+            0% {
+                right: -200px;
+                position: relative;
+            }
+
+            50% {
+                right: -100px;
+                position: relative;
+            }
+
+            100% {
+                right: 0px;
+                position: relative;
+            }
+
+        }
+
+        @keyframes updown {
+            0% {
+                position: relative;
+                left: 200px;
             }
 
             50% {
                 position: relative;
-                left: -200px;
+                left: 100px;
             }
 
             100% {
@@ -524,7 +620,11 @@
 
         }
 
-        @media screen and (width < 1000px) {
+        @media screen and (max-width:1000px) {
+            nav ul li a {
+                color: white;
+            }
+
             .px10 {
                 padding: 0;
             }
@@ -537,18 +637,11 @@
                 padding: 0 0px;
             }
 
-            form {
-                width: 90%;
-            }
         }
 
-        @media screen and (min-width:1000px) {
-            .team {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
-            }
-        }
 
-        @media screen and (min-width:500px) and (max-width:840px) {
+
+        @media screen and (min-width:590px) and (max-width:840px) {
 
             .container {
                 grid-template-columns: 100%;
@@ -577,9 +670,17 @@
             .servicescontainer {
                 padding: 20px 40px;
             }
+
+            .team {
+                grid-template-columns: repeat(auto-fit, minmax(170px, 2fr));
+            }
         }
 
-        @media screen and (max-width:500px) {
+        @media screen and (max-width:590px) {
+
+            .team {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 2fr));
+            }
 
             .container {
                 grid-template-columns: 100%;
@@ -598,16 +699,17 @@
                 display: block;
             }
 
-            nav {
-                padding: 10px;
-                display: grid;
-                place-items: center;
-            }
-
             nav ul {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-evenly;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                padding: 10px;
+                background-color: #00d0ff;
+                flex-direction: column;
+                row-gap: 4px;
+                text-align: left;
+                animation: tb 0.3s linear 0s 1 alternate forwards;
+                top: var(--navheight);
             }
 
             nav ul li {
@@ -635,17 +737,61 @@
                 padding: 14px 0;
                 line-height: 1;
             }
-            .contact{
+
+            .contact {
                 padding: 8px;
             }
+
+            nav {
+                padding: 10px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .cros {
+                display: block;
+            }
+
+            /* .cros{
+                width: 30px;
+                display: block;
+            }
+            .span{
+                position: relative;
+                width: 100%;
+                height: 3px;
+                display: block;
+                background-color: white;
+            } */
         }
+
+        .colorblue {
+            color: red;
+        }
+
+        .boxshadow {
+            box-shadow: 0 8px 12px 2px #808080b3;
+        }
+        .animation{
+            transform: translateY(50px);
+            opacity: 0;
+            transition: 1.2s;
+        }
+
+        .show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
     </style>
 </head>
 
 <body>
     <nav>
         <p><img src="for all logo.jpeg" class="logo" alt="logo"> ForAll a tech</p>
-        <ul>
+        <ul class="animation">
             <li><a href="#">Home</a></li>
             <li><a href="#about">About us</a></li>
             <li><a href="#services">Services</a></li>
@@ -654,22 +800,25 @@
             <li><a href="#contact">Contact</a></li>
             <li><a href="#career">Careers</a></li>
         </ul>
+        <h2 class="cros">
+            <span class="span"></span>
+        </h2>
     </nav>
     <div class="all">
-        <div class="containerblue" data-aos="fade-up">
+        <div class="containerblue">
             <section class="container">
-                <div class="section1">
+                <div class="section1 animation">
                     <h2 style="font-size: 2.5rem;">Better Solutions For your Business</h2>
                     <p class="m-y-5">we are team of talanted designers making Website with Bootstrap</p>
                     <a href="#contact" class="btn"><span>Get Started</span></a>
                 </div>
         </div>
-        <div class="aboutus" id="about" data-aos="fade-in">
-            <h3 class="aboutush3">
+        <div class="aboutus" id="about">
+            <h3 class="aboutush3 animation">
                 ABOUT US
             </h3>
             <div class="about pd-5">
-                <p> <mark>Forall A Tech</mark> is a leading global technology services and solutions provider, led by
+                <p class="animation"> <mark>Forall A Tech</mark> is a leading global technology services and solutions provider, led by
                     Business and
                     Technology Consulting. FORALL A TECH provides business-friendly solutions to help clients succeed
                     and be
@@ -683,7 +832,7 @@
                     and newer business models, as a long-term sustainable partner.
                 </p>
             </div>
-            <div class="aboutimg pd-5">
+            <div class="aboutimg animation pd-5">
                 <img src="teampic.jpg" alt="team">
             </div>
         </div>
@@ -692,7 +841,7 @@
             <h3>Digital marketing services that help you grow.</h3>
             <p>Fortune 100 companies and established brands trust our enterprise software development.</p>
             <div class="servicescolumn">
-                <div class="services">
+                <div class="services animation">
                     <i class="fa fa-desktop icons" aria-hidden="true"></i>
                     <h3 class="mb-20px">web development</h3>
                     <p>E commerce-strategy</p>
@@ -700,7 +849,7 @@
                     <p>front-end development</p>
                     <p>business intelligence</p>
                 </div>
-                <div class="services">
+                <div class="services animation">
                     <i class="fa fa-mobile icons" aria-hidden="true"></i>
                     <h3 class="mb-20px">Mobile development</h3>
                     <p>Ios</p>
@@ -708,15 +857,15 @@
                     <p>Hybrid platform</p>
                     <p>User testing</p>
                 </div>
-                <div class="services">
-                    <i class="fa fa-line-chart icons" aria-hidden="true"></i>
+                <div class="services animation">
+                    <i class="fa fa-line-chart icons " aria-hidden="true"></i>
                     <h3 class="mb-20px">Branding Services</h3>
                     <p>logo design</p>
                     <p>ui/ux design</p>
                     <p>visual design</p>
                     <p>brand collateral</p>
                 </div>
-                <div class="services">
+                <div class="services animation">
                     <i class="fa fa-thumbs-up icons blue" aria-hidden="true"></i>
                     <h3 class="mb-20px">Digital Marketing</h3>
                     <p>Marketing strategy</p>
@@ -731,7 +880,7 @@
                     <div><a href="#contact" class="btn"><span>Get Started</span></a></div>
                 </div>
                 <div class="challengecolumn">
-                    <div class="challenge">
+                    <div class="challenge animation">
                         <img src="images/gallery/06.jpg" class="img" alt="">
                         <div class="c">
                             <h3 class="color">Mission and vision</h3>
@@ -741,7 +890,7 @@
                             <a href="#contact" class="btn2"><span>Get Started</span></a>
                         </div>
                     </div>
-                    <div class="challenge">
+                    <div class="challenge animation">
                         <img src="images/gallery/07.jpg" class="img" alt="">
                         <div class="c">
                             <h3 class="color">Our challenges</h3>
@@ -751,7 +900,7 @@
                             <a href="#contact" class="btn2"><span>Get Started</span></a>
                         </div>
                     </div>
-                    <div class="challenge">
+                    <div class="challenge animation">
                         <img src="images/gallery/04.jpg" class="img" alt="">
                         <div class="c">
                             <h3 class="color">Meet our team</h3>
@@ -767,54 +916,54 @@
             <h3 class="color">Meet our heroes</h3>
             <p>Our team is friendly, talkative, and fully reliable.</p>
             <div class="team">
-                <div class="members">
+                <div class="members animation">
                     <img src="team/01.jpg" alt="">
                     <h4>Aaron Sharp</h4>
                     <p class="grey">Chief People Officer</p>
                 </div>
-                <div class="members">
+                <div class="members animation">
                     <img src="team/02.jpg" alt="">
                     <h4>Homer Reyes</h4>
                     <p class="grey">Vice President</p>
                 </div>
-                <div class="members"><img src="team/03.jpg" alt="">
+                <div class="members animation"><img src="team/03.jpg" alt="">
                     <h4>Felica Queen</h4>
                     <p class="grey">Team Leader</p>
                 </div>
-                <div class="members"><img src="team/04.jpg" alt="">
+                <div class="members animation"><img src="team/04.jpg" alt="">
                     <h4>Sara Lisbon</h4>
                     <p class="grey">Production Manager</p>
                 </div>
-                <div class="members"><img src="team/05.jpg" alt="">
+                <div class="members animation"><img src="team/05.jpg" alt="">
                     <h4>Michael Bean</h4>
                     <p class="grey">Quality control</p>
                 </div>
-                <div class="members"><img src="team/07.jpg" alt="">
+                <div class="members animation"><img src="team/07.jpg" alt="">
                     <h4>Alice Williams</h4>
                     <p class="grey">Marketing manager</p>
                 </div>
-                <div class="members"><img src="team/06.jpg" alt="">
+                <div class="members animation"><img src="team/06.jpg" alt="">
                     <h4>Paul Flavius</h4>
                     <p class="grey">Human resources</p>
                 </div>
-                <div class="members">
+                <div class="members animation">
                     <img src="team/08.jpg" alt="">
                     <h4>Anne Smith</h4>
                     <p class="grey">Sales and Marketing</p2>
                 </div>
-                <div class="members"><img src="team/09.jpg" alt="">
+                <div class="members animation"><img src="team/09.jpg" alt="">
                     <h4>Mellissa Doe</h4>
                     <p class="grey">Marketing Expert</p>
                 </div>
-                <div class="members"><img src="team/10.jpg" alt="">
+                <div class="members animation"><img src="team/10.jpg" alt="">
                     <h4>Ben Aguilar</h4>
                     <p class="grey">Community</p>
                 </div>
-                <div class="members"><img src="team/11.jpg" alt="">
+                <div class="members animation"><img src="team/11.jpg" alt="">
                     <h4>Kim Hamilton</h4>
                     <p class="grey">Developer</p>
                 </div>
-                <div class="members">
+                <div class="members animation">
                     <img src="teampic.jpg" alt="">
                     <h4>rose</h4>
                     <p class="grey">Developer</p>
@@ -822,22 +971,22 @@
             </div>
         </div>
         <div class="ourmv" id="ourmv">
-            <h3 class="color px10">
+            <h3 class="color px10 animation">
                 We enable constant enterprise transformation at speed and scale.
             </h3>
-            <p class="px10 em1-1">We are a creative company, who works with passion and love. We provide the best
+            <p class="px10 em1-1 animation">We are a creative company, who works with passion and love. We provide the best
                 services
                 you need. We help you to get better, We take pride in helping our clients deliver marvelous results when
                 it
                 comes totheir projects. From data to performance, we’ve got you covered.</p>
             <div class="mv">
                 <!-- contenteditable="" -->
-                <div class="Mission p10" id="slide">
+                <div class="Mission p10 animation" id="slide">
                     <h3 class="mb-3">Our Mission</h3>
                     <p>We also know those epic stories, those modern-day legends surrounding the early failures of such
                         supremely successful folks as Michael Jordan and Bill Gates.</p>
                 </div>
-                <div class="vision p10" id="opacity">
+                <div class="vision p10 animation" id="opacity">
                     <h3 class="mb-3">Our Vision</h3>
                     <p>To make these virtues a habit, himself on his daily actions. In a journal he drew a table with a
                         row
@@ -850,7 +999,7 @@
         </div> -->
         <div class="contactcontainer" id="contact">
             <h3 class="heading color white">Contact</h3>
-            <div class="contact">
+            <div class="contact animation">
                 <div class="f-item contactus">
                     <h3 class="color white">Contact us</h3>
                     <p>Feel free to get in touch with us! we'd be happy to schedule a phone or in-person consultation to
@@ -858,7 +1007,7 @@
                         your
                         business needs. Our initial consultataions are complimentary.</p>
                 </div>
-                <div class="f-item getconnect">
+                <div class="f-item getconnect animation">
                     <h3>Get connected with our experts</h3>
                     <p>Do you have some crazy ideas popping n your mind that need to be worked upon? We'd more than love
                         to
@@ -871,7 +1020,7 @@
                     <a href="mailto:nagarayush570@gmail.com" class="red">hello@forallatech.com</a>
                 </div>
             </div>
-            <div class="form">
+            <div class="form animation">
                 <form action="https://formsubmit.co/nagarayush570@gmail.com" method="post">
                     <label for="name">Your Name</label>
                     <input type="text" name="name" id="name" placeholder="NAME" required>
@@ -905,14 +1054,14 @@
                     <input type="reset">
                 </form>
                 <div class="addreses">
-                    <div class="address">
+                    <div class="address animation">
                         <h4>MP Nagar,Bhopal,India</h4>
                         <address class="colorgrey">2nd Floor, Plot No. 52, For All A Tech, in front of Hotel Sangat
                             Regency,
                             Near
                             City Bank, Zone-1, Maharana Pratap Nagar, Bhopal, Madhya Pradesh 462011</address>
                     </div>
-                    <div class="address">
+                    <div class="address animation">
                         <h4>Indrapuri, Bhopal, India</h4>
                         <address class="colorgrey">ForAll A Tech, Second Floor, Plot 34, Sector A, Indrapuri, Bhopal,
                             Madhya
@@ -923,92 +1072,86 @@
         </div>
     </div>
     <script>
-        // let slide = document.getElementById('slide');
-
-        // let observer = new IntersectionObserver(entries=>{
-        //     entries.forEach(entry=>{
-        //         entry.target.classList.toggle('slide')
-        //     },{
-        //         threshold:2,
-        //     })
-        //     console.log(entries)
-        // })
-        // observer.observe(slide)
-
-        let about = document.getElementById('about');
-        let services = document.getElementById('services')
-        let team = document.getElementById('team')
-        let mv = document.getElementById('ourmv')
-        let contact = document.getElementById('contact')
-        let arr = [about, services, team, mv, contact]
-        // console.log(arr)
-
-        let slide = document.getElementById('slide');
-
-        // let observer = new IntersectionObserver(entries => {
-        //     entries.forEach(entry => {
-        //         if(entry.target === about){
-        //             console.log('true')
-        //             document.querySelector('nav').children[1].children[1].classList.toggle('underline',entry.isIntersecting)
-        //         }
-        //         if(entry.target === services){
-        //             document.querySelector('nav').children[1].children[2].classList.toggle('underline',entry.isIntersecting)
-        //         }
-        //         if(entry.target === team){
-        //             document.querySelector('nav').children[1].children[3].classList.toggle('underline',entry.isIntersecting)
-        //         }
-        //         if(entry.target === ourmv){
-        //             document.querySelector('nav').children[1].children[4].classList.toggle('underline',entry.isIntersecting)
-        //         }
-        //         if(entry.target === contact){
-        //             document.querySelector('nav').children[1].children[5].classList.toggle('underline',entry.isIntersecting)
-        //         }
-        //     }, {
-        //         threshold: 100,
-        //     })
-        //     console.log(entries)
-        // })
-        // arr.forEach(e =>{
-        //     observer.observe(e)
-        // })
+        // box shadow on challenge class
+        const challenge = document.getElementsByClassName('challenge');
+        Array.from(challenge).forEach(function (element) {
+            setInterval(() => {
+                element.classList.toggle('boxshadow')
+            }, 1500)
+        })
 
 
+        // navbar hamburgue on click
+        const cros = document.querySelector('.cros');
+        cros.addEventListener('click', function () {
+            const navheight = document.querySelector('nav').offsetHeight;
+            const span = document.querySelector('.span')
+            const navul = document.querySelector('nav ul')
 
+            const topheight = document.documentElement.style.setProperty('--navheight', `${navheight}` + 'px')
+
+            const spanbefore = window.getComputedStyle(span, '::before')
+            const spanafter = window.getComputedStyle(span, '::after')
+            console.log(spanbefore.top)
+            if (spanbefore.top == '-8px') {
+                navul.style.marginTop = `${navheight + 'px'}`
+                navul.style.display = 'block'
+                span.style.backgroundColor = 'transparent'
+                document.documentElement.style.setProperty('--topheight', '0px')
+                document.documentElement.style.setProperty('--bottomheight', '0px')
+                document.documentElement.style.setProperty('--before', '135deg')
+                document.documentElement.style.setProperty('--after', '-135deg')
+                navul.style.cssText = 'display:block'
+
+            }
+            else {
+                navul.style.display = ''
+                span.style.backgroundColor = ''
+                document.documentElement.style.setProperty('--topheight', '-8px')
+                document.documentElement.style.setProperty('--bottomheight', '-8px')
+                document.documentElement.style.setProperty('--before', '0deg')
+                document.documentElement.style.setProperty('--after', '0deg')
+            }
+
+            const a = document.querySelectorAll('nav ul li a');
+            Array.from(a).forEach((element) => {
+                element.addEventListener('click', function (e) {
+                    span.style.backgroundColor = ''
+                    document.documentElement.style.setProperty('--topheight', '-8px')
+                    document.documentElement.style.setProperty('--bottomheight', '-8px')
+                    document.documentElement.style.setProperty('--before', '0deg')
+                    document.documentElement.style.setProperty('--after', '0deg')
+                    document.querySelector('nav ul').style.display = 'none'
+
+                })
+            })
+            console.log(navheight)
+        })
+
+        // animation on scroll
+        const animation =  document.querySelectorAll('.animation')
+        const options = {
+            threshold: 0.1
+        }
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                entry.target.classList.toggle('show', entry.isIntersecting)
+            })
+        }, options)
+        animation.forEach(anm => {
+            observer.observe(anm)
+        })
+
+
+        /// bookmarks beautification
         let navheight = document.querySelector('nav').offsetHeight;
-        document.documentElement.style.setProperty('--scroll-padding', navheight + 'px')
+        document.documentElement.style.setProperty('--scroll-padding', navheight -0.5 + 'px')
         window.addEventListener('resize', () => {
             navheight = document.querySelector('nav').offsetHeight;
-            document.documentElement.style.setProperty('--scroll-padding', navheight + 'px')
+            document.documentElement.style.setProperty('--scroll-padding', navheight -0.5 + 'px')
             console.log(navheight)
         })
     </script>
-    <!-- <script defer src="https://friconix.com/cdn/friconix.js"></script> -->
-    <!-- <script>
-        document.addEventListener('scroll', function (event) {
-            if (window.pageYOffset > 2200) {
-                let n = 0
-                console.log('true')
-                document.getElementById('slide').classList.add('slide')
-                document.getElementById('opacity').classList.add('opacity')
-                // document.body.style.cssText="background:red;"
-                // if (document.querySelector('.num').innerHTML == 0) {
-                //     let s = setInterval(function () {
-                //         document.querySelector('.num').innerHTML = n;
-                //         n++
-                //         if (n == 200) {
-                //             clearInterval(s)
-                //         }
-                //     }, 30)
-                // }
-            }
-            if (window.pageYOffset < 2000) {
-                console.log('false')
-                document.getElementById('opacity').classList.remove('opacity')
-                document.getElementById('slide').classList.remove('slide')
-            }
-
-        })
-    </script> -->
 </body>
 
 </html>

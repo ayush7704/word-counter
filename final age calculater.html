@@ -277,6 +277,15 @@
             border-radius: 8px;
             z-index: 3;
         }
+        .animation{
+            transform: translateY(50px);
+            opacity: 0;
+            transition: 1s;
+        }
+        .anm{
+            transform: translateY(0px);
+            opacity: 1;
+        }
 
         @media screen and (max-width:600px) {
             form {
@@ -293,40 +302,40 @@
 </head>
 
 <body>
-    <p class="copy">copied!</p>
+    <p class="copy animation">copied!</p>
     <header>
         <h4>Age Calculator By Ayush</h4>
         <div class="click">
             <h2></h2>
         </div>
     </header>
-    <div class="wrap">
+    <div class="wrap animation">
         <ul>
             <li>
                 <details>
                     <summary>About</summary>
-                    <p class="mb5px">A simple age Calculator that shows you the age & upcoming birthday Days.</p>
-                    <p class="mb5px">Created in june 2023.</p>
-                    <p class="mb5px">Design & Developed By - <i>Ayush Nagar</i>.</p>
+                    <p class="mb5px animation">A simple age Calculator that shows you the age & upcoming birthday Days.</p>
+                    <p class="mb5px animation">Created in june 2023.</p>
+                    <p class="mb5px animation">Design & Developed By - <i>Ayush Nagar</i>.</p>
                 </details>
             </li>
             <li>
                 <details>
                     <summary>Contact</summary>
-                    <div class="detail-flex">
-                        <a href="mailto:nagarayush570@gmail.com" class="gmailicon">M</a>
-                        <a href="mailto:nagarayush570@gmail.com" class="underline">nagarayush570@gmail.com</a>
+                    <div class="detail-flex animation">
+                        <a href="mailto:nagarayush570@gmail.com" class="gmailicon animation">M</a>
+                        <a href="mailto:nagarayush570@gmail.com" class="underline animation">nagarayush570@gmail.com</a>
                     </div>
                     <div class="detail-flex">
-                        <p class="lincicon number">C</p>
-                        <p class="p5px number">9754742477</p>
+                        <p class="lincicon number animation">C</p>
+                        <p class="p5px number animation">9754742477</p>
+                    </div> 
+                    <div class="detail-flex">
+                        <a href="https://wa.me/919754742477" class="whatsicon animation">W</a><a href="https://wa.me/919754742477" class="animation">9754742477</a>
                     </div>
                     <div class="detail-flex">
-                        <a href="#" class="whatsicon">W</a><a href="https://wa.me/919754742477">9754742477</a>
-                    </div>
-                    <div class="detail-flex">
-                        <a href="https://linkedin.com/in/ayush-nagar-front-end" class="lincicon">in</a> <a
-                            href="https://linkedin.com/in/ayush-nagar-front-end">Linkedin</a>
+                        <a href="https://linkedin.com/in/ayush-nagar-front-end" class="lincicon animation">in</a> <a
+                            href="https://linkedin.com/in/ayush-nagar-front-end" class="animation">Linkedin</a>
                     </div>
                 </details>
             </li>
@@ -336,52 +345,66 @@
     </div>
     <div class="container">
         <form action="" onsubmit="return calculator()">
-            <h3 class="flex">
+            <h3 class="flex animation">
                 <span>Date of Birth</span>
                 <span id="dobday">day</span>
             </h3>
             <input type="date" id="dob" placeholder="hello">
 
-            <h3 class="flex">
+            <h3 class="flex animation">
                 <span>Today's Date</span>
                 <span id="todayday">day</span>
             </h3>
             <input type="date" id="tilldate">
-            <div class="div">
+            <div class="div animation">
                 <input type="submit" value="CALCULATE">
                 <input type="reset" value="CLEAR" onclick="doclear()">
             </div>
         </form>
         <p class="error"></p>
-        <p class="heading">Age</p>
+        <p class="heading animation">Age</p>
         <h3 class="result">
-            <div class="age">
+            <div class="age animation">
                 <p>Years</p>
                 <p id="years">0</p>
             </div>
-            <div class="age">
+            <div class="age animation">
                 <p>Months</p>
                 <p id="months">0</p>
             </div>
-            <div class="age">
+            <div class="age animation">
                 <p>Days</p>
                 <p id="days">0</p>
             </div>
         </h3>
-        <p class="heading">Next Birthday</p>
-        <h3 class="result">
-            <div class="age">
+        <p class="heading animation">Next Birthday</p>
+        <h3 class="result animation">
+            <div class="age animation">
                 <p>Months</p>
                 <p id="nextmonths">0</p>
             </div>
-            <div class="age">
+            <div class="age animation">
                 <p>Days</p>
                 <p id="nextdays">0</p>
             </div>
         </h3>
     </div>
-    <div class="radial"></div>
+    <div class="radial animation"></div>
     <script>
+        // animation 
+        const animation = document.querySelectorAll('.animation');
+        const options = {}
+        const observer = new IntersectionObserver(entries =>{
+            entries.forEach(entry =>{
+                entry.target.classList.toggle('anm',entry.isIntersecting);
+                console.log(entry)
+            })
+        },options)
+        animation.forEach(animation =>{
+            observer.observe(animation)
+        })
+
+        // copy to clipbord
         const copy = document.querySelectorAll('.number')
         Array.from(copy).forEach(element => {
             element.addEventListener('click', function (e) {
@@ -391,12 +414,15 @@
                 }, 100)
                 setTimeout(() => {
                     document.querySelector('.copy').style.display = 'none'
-                }, 500)
+                }, 1000)
             })
         });
+
+
+        // navbar hamburguer
         let wrap = document.querySelector('.click');
         wrap.addEventListener('click', function () {
-            // alert('helo')
+
             const header = document.querySelector('Header')
             const h2 = document.querySelector('h2')
 
@@ -430,6 +456,7 @@
         const days = document.getElementById('days')
 
 
+        // calculation section 
         function calculator(event) {
             const dob = new Date(document.getElementById('dob').value);
             const tilldate = new Date(document.getElementById('tilldate').value);
@@ -494,6 +521,8 @@
             }
             return false
         }
+
+        // refresh the page
         function doclear() {
             location.reload()
         }
