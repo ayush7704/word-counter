@@ -551,6 +551,10 @@
             animation: updown 0.3s linear 0s 1 alternate forwards;
         }
 
+        /* .bluriff {
+           
+        } */
+
         @keyframes slide {
             0% {
                 left: -200px;
@@ -774,7 +778,8 @@
         .boxshadow {
             box-shadow: 0 8px 12px 2px #808080b3;
         }
-        .animation{
+
+        .animation {
             transform: translateY(50px);
             opacity: 0;
             transition: 1.2s;
@@ -784,7 +789,6 @@
             transform: translateY(0);
             opacity: 1;
         }
-
     </style>
 </head>
 
@@ -818,7 +822,8 @@
                 ABOUT US
             </h3>
             <div class="about pd-5">
-                <p class="animation"> <mark>Forall A Tech</mark> is a leading global technology services and solutions provider, led by
+                <p class="animation"> <mark>Forall A Tech</mark> is a leading global technology services and solutions
+                    provider, led by
                     Business and
                     Technology Consulting. FORALL A TECH provides business-friendly solutions to help clients succeed
                     and be
@@ -974,7 +979,8 @@
             <h3 class="color px10 animation">
                 We enable constant enterprise transformation at speed and scale.
             </h3>
-            <p class="px10 em1-1 animation">We are a creative company, who works with passion and love. We provide the best
+            <p class="px10 em1-1 animation">We are a creative company, who works with passion and love. We provide the
+                best
                 services
                 you need. We help you to get better, We take pride in helping our clients deliver marvelous results when
                 it
@@ -1071,6 +1077,7 @@
             </div>
         </div>
     </div>
+    <div class="bluriff"></div>
     <script>
         // box shadow on challenge class
         const challenge = document.getElementsByClassName('challenge');
@@ -1097,6 +1104,13 @@
                 navul.style.marginTop = `${navheight + 'px'}`
                 navul.style.display = 'block'
                 span.style.backgroundColor = 'transparent'
+                document.querySelector('.bluriff').style.cssText=`backdrop-filter: blur(6px); position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0px;
+            left: 0;
+            z-index: 44;`
                 document.documentElement.style.setProperty('--topheight', '0px')
                 document.documentElement.style.setProperty('--bottomheight', '0px')
                 document.documentElement.style.setProperty('--before', '135deg')
@@ -1107,6 +1121,7 @@
             else {
                 navul.style.display = ''
                 span.style.backgroundColor = ''
+                document.querySelector('.bluriff').style.cssText=''
                 document.documentElement.style.setProperty('--topheight', '-8px')
                 document.documentElement.style.setProperty('--bottomheight', '-8px')
                 document.documentElement.style.setProperty('--before', '0deg')
@@ -1117,6 +1132,7 @@
             Array.from(a).forEach((element) => {
                 element.addEventListener('click', function (e) {
                     span.style.backgroundColor = ''
+                    document.querySelector('.bluriff').style.cssText=''
                     document.documentElement.style.setProperty('--topheight', '-8px')
                     document.documentElement.style.setProperty('--bottomheight', '-8px')
                     document.documentElement.style.setProperty('--before', '0deg')
@@ -1129,7 +1145,7 @@
         })
 
         // animation on scroll
-        const animation =  document.querySelectorAll('.animation')
+        const animation = document.querySelectorAll('.animation')
         const options = {
             threshold: 0.1
         }
@@ -1145,10 +1161,10 @@
 
         /// bookmarks beautification
         let navheight = document.querySelector('nav').offsetHeight;
-        document.documentElement.style.setProperty('--scroll-padding', navheight -0.5 + 'px')
+        document.documentElement.style.setProperty('--scroll-padding', navheight - 0.5 + 'px')
         window.addEventListener('resize', () => {
             navheight = document.querySelector('nav').offsetHeight;
-            document.documentElement.style.setProperty('--scroll-padding', navheight -0.5 + 'px')
+            document.documentElement.style.setProperty('--scroll-padding', navheight - 0.5 + 'px')
             console.log(navheight)
         })
     </script>

@@ -468,8 +468,8 @@
             // const whichday = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
             const caldate = new Date();
 
-            dob.setDate(dob.getDate() + 1)
-            tilldate.setDate(tilldate.getDate() + 1)
+            // dob.setDate(dob.getDate() + 1)
+            // tilldate.setDate(tilldate.getDate() + 1)
 
             caldate.setFullYear(tilldate.getFullYear() - dob.getFullYear())
             caldate.setMonth(tilldate.getMonth() - dob.getMonth())
@@ -501,6 +501,9 @@
 
                 dobday.innerHTML = whichday[dob.getDay()]
                 todayday.innerHTML = whichday[tilldate.getDay()]
+                alert(dob.getDate())
+                console.log(dob.getDate())
+                console.log(tilldate.getDate())
 
                 years.innerHTML = year;
                 months.innerHTML = month;

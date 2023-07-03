@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>word counter</title>
     <style>
         * {
             padding: 0;
@@ -16,19 +19,63 @@
         body {
             background: linear-gradient(90deg, #a845dbed, #00f2fd8a);
             font-family: math;
+            color: midnightblue;
+            overflow: hidden;
         }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 1px 4px 1px white;
+            font-size: 1rem;
+            /* background-color: #6782a5; */
+            padding: 14px;
+            font-weight: bold;
+            text-transform: capitalize;
+            color: white;
+            margin-bottom: 7px;
+            font-family: system-ui;
+        }
+
+        .click {
+            width: 50px;
+            padding: 10px
+        }
+
+        .click span {
+            position: relative;
+            display: block;
+
+        }
+
+        .click span,
+        .click span::before,
+        .click span::after {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+        }
+
+        .click span::before,
+        .click span::after {
+            content: '';
+            position: absolute;
+        }
+
+        .click span::before {
+            top: var(--top, -8px);
+            transform: rotate(var(--rotatebfr, 0deg));
+        }
+
+        .click span::after {
+            bottom: var(--bottom, -8px);
+            transform: rotate(var(--rotateaft, 0deg));
+        }
+
 
         .container {
             padding: 20px;
-        }
-
-        h2:first-of-type {
-            color: transparent;
-            -webkit-background-clip: text;
-            background-image: linear-gradient(to top, #004eff, #ff1800);
-            text-align: center;
-            font-size: 2.4rem;
-            margin-bottom: 3px;
         }
 
         textarea {
@@ -36,21 +83,139 @@
             resize: none;
             padding: 10px;
             font-size: 1.3rem;
+            font-family: math;
         }
 
-        h2:nth-of-type(2) {
+        h2:last-of-type {
             display: flex;
             justify-content: space-between;
+        }
+
+        .d-none {
+            display: none;
+            position: absolute;
+            top: var(--topmargin);
+            left: 0;
+            color: white;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            padding: 12px;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, #a845db, #00f2fd);
+        }
+
+        .d-none ul li {
+            padding: 15px 0 10px 10px;
+        }
+
+        .detail-flex {
+            display: flex;
+            margin: 12px 0;
+            align-items: center;
+        }
+
+        ul li a {
+            color: white;
+            display: block;
+            padding: 5px;
+            text-decoration: none;
+        }
+
+        .underline {
+            text-decoration: underline !important;
+        }
+
+        .connect .heading {
+            font-size: 18px;
+            text-transform: capitalize;
+            text-align: center;
+        }
+
+
+        .connectlink {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0
+        }
+
+        .fa-phone-volume{
+            font-size: 1.2em;
+        }
+
+        .copytext {
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #80808094;
+            color: var(--theme-text-color, #ffffff);
+            display: none;
+            padding: 8px 12px;
+            font-size: 17px;
+            border-radius: 4px;
+            z-index: 50;
+            backdrop-filter: blur(15px);
         }
     </style>
 </head>
 
 <body>
+    <nav>
+        <h3 class="h2">word counter from ayush </h3>
+        <h3 class="click">
+            <span></span>
+        </h3>
+    </nav>
+    <section class="d-none">
+        <ul>
+            <li>
+                <details>
+                    <summary>About</summary>
+                    <p class="mb5px">A word and characters counter.</p>
+                    <p class="mb5px">Created in may 2023.</p>
+                    <p class="mb5px">Design & Developed By - <i>Ayush Nagar</i>.</p>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Contact</summary>
+                    <div class="usefullinks connect translateY">
+                        <h3 class="heading bg">Connect with me using these direct links</h3>
+                        <div class="connectlink bg translateY">
+                            <i class="fa fa-thin fa-phone-volume fa-xl call" style=`var(--theme-text-color)`></i>
+                            <p class="call">9754742477</p>
+                        </div>
+                        <div class="connectlink bg translateY">
+                            <a href="https://wa.me/919754742477">
+                                <i class="fa-brands fa-whatsapp fa-xl" style="color: #14cb10;"></i>
+                            </a>
+                            <p><a href="https://wa.me/919754742477">9754742477</a></p>
+                        </div>
+                        <div class="connectlink bg translateY">
+                            <a href="https://linkedin.com/in/ayush-nagar-front-end">
+                                <i class="fa-brands fa-linkedin fa-xl" style="color: #005eff;"></i>
+                            </a>
+                            <p><a href="https://linkedin.com/in/ayush-nagar-front-end">Ayush Nagar </a></p>
+                        </div>
+                        <div class="connectlink bg translateY">
+                            <a href="mailto:nagarayush570@gmail.com">
+                                <i class="fa-regular fa-envelope fa-xl" style=`var(--theme-text-color)`></i>
+                            </a>
+                            <p><a href="mailto:nagarayush570@gmail.com">nagarayush570@gmail.com</a></p>
+                        </div>
+                </details>
+            </li>
+            <li>Design & Developed by <i>Ayush Nagar</i>.</li>
+            <li>Open To Work -</li>
+        </ul>
+    </section>
     <div class="container">
-        <h2>word counter from ayush </h2>
         <textarea name="" id="textarea" cols="30" rows="10"></textarea>
         <h2><span id="char">0</span><span id="word">0</span></h2>
     </div>
+    <div class="copytext">Copied</div>
 
     <script>
         document.getElementById('textarea').addEventListener('input', function () {
@@ -60,12 +225,53 @@
             let value = this.value;
             let valuel = value.length;
             let values = value.split(' ')
+            console.log(values.length)
             char.innerHTML = (valuel - (values.length - 1)) <= 1 ? valuel - (values.length - 1) + ' character' : valuel - (values.length - 1) + ' characters'
 
 
             let valuesf = values.filter((value) => value != '')
             word.innerHTML = valuesf.length <= 1 ? valuesf.length + ' word' : valuesf.length + ' words'
 
+        })
+        const click = document.querySelector('.click');
+        click.addEventListener('click', function () {
+            const block = document.querySelector('.d-none')
+            const navheight = document.querySelector('nav').offsetHeight;
+            const navspan = document.querySelector('nav span')
+            document.documentElement.style.setProperty('--topmargin', `${navheight}px`)
+
+            const spanbfr = window.getComputedStyle(navspan, '::before')
+            console.log(spanbfr.top)
+            if (spanbfr.top == '-8px') {
+                navspan.style.background = 'transparent'
+                block.style.display = 'block'
+                document.documentElement.style.setProperty('--top', `0px`)
+                document.documentElement.style.setProperty('--bottom', `0px`)
+                document.documentElement.style.setProperty('--rotatebfr', `135deg`)
+                document.documentElement.style.setProperty('--rotateaft', `-135deg`)
+            }
+            else {
+                navspan.style.background = ''
+                block.style.display = 'none'
+                document.documentElement.style.setProperty('--top', `-8px`)
+                document.documentElement.style.setProperty('--bottom', `-8px`)
+                document.documentElement.style.setProperty('--rotatebfr', `0deg`)
+                document.documentElement.style.setProperty('--rotateaft', `0deg`)
+            }
+
+            const copy = document.getElementsByClassName('call');
+            Array.from(copy).forEach(event => {
+                event.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    navigator.clipboard.writeText(9754742477)
+                    setTimeout(() => {
+                        document.querySelector('.copytext').style.display = 'block'
+                    }, 100)
+                    setTimeout(() => {
+                        document.querySelector('.copytext').style.display = 'none'
+                    }, 1000)
+                })
+            })
         })
     </script>
 </body>
