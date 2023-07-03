@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>ayush.Age.Calculator</title>
     <style>
         * {
@@ -222,7 +225,9 @@
         .underline {
             text-decoration: underline !important;
         }
-
+        .pd-5p{
+            padding-left: 5px;
+        }
         .mb5px {
             margin: 5px 0;
         }
@@ -233,29 +238,9 @@
             align-items: center;
         }
 
-        .lincicon,
-        .gmailicon,
-        .whatsicon {
-            font-size: 1.4rem;
-            padding: 10px !important;
-            font-weight: 900;
-            border-radius: 20%;
-            font-family: system-ui;
+        .pdleft{
+            padding: 5px 5px 5px 12px;
         }
-
-        .lincicon {
-            background: #0072ff;
-        }
-
-        .gmailicon {
-            color: red !important;
-            background: white !important;
-        }
-
-        .whatsicon {
-            background: #4ee310;
-        }
-
         .p5px {
             padding: 5px;
         }
@@ -265,24 +250,26 @@
         }
 
         .copy {
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            transform: translate(-50%,-50%);
             background-color: gray;
             color: white;
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: none;
-            padding: 8px;
+            padding: 8px 12px;
             font-size: 17px;
-            border-radius: 8px;
-            z-index: 3;
+            border-radius: 4px;
+            z-index: 50;
         }
-        .animation{
+
+        .animation {
             transform: translateY(50px);
             opacity: 0;
             transition: 1s;
         }
-        .anm{
+
+        .anm {
             transform: translateY(0px);
             opacity: 1;
         }
@@ -302,7 +289,7 @@
 </head>
 
 <body>
-    <p class="copy animation">copied!</p>
+    <p class="copy">copied!</p>
     <header>
         <h4>Age Calculator By Ayush</h4>
         <div class="click">
@@ -314,7 +301,8 @@
             <li>
                 <details>
                     <summary>About</summary>
-                    <p class="mb5px animation">A simple age Calculator that shows you the age & upcoming birthday Days.</p>
+                    <p class="mb5px animation">A simple age Calculator that shows you the age & upcoming birthday Days.
+                    </p>
                     <p class="mb5px animation">Created in june 2023.</p>
                     <p class="mb5px animation">Design & Developed By - <i>Ayush Nagar</i>.</p>
                 </details>
@@ -323,19 +311,26 @@
                 <details>
                     <summary>Contact</summary>
                     <div class="detail-flex animation">
-                        <a href="mailto:nagarayush570@gmail.com" class="gmailicon animation">M</a>
+                        <a href="mailto:nagarayush570@gmail.com">
+                            <i class="fa-regular fa-envelope fa-xl" style="color: #f2f2f2;"></i>
+                        </a>
                         <a href="mailto:nagarayush570@gmail.com" class="underline animation">nagarayush570@gmail.com</a>
                     </div>
                     <div class="detail-flex">
-                        <p class="lincicon number animation">C</p>
-                        <p class="p5px number animation">9754742477</p>
-                    </div> 
-                    <div class="detail-flex">
-                        <a href="https://wa.me/919754742477" class="whatsicon animation">W</a><a href="https://wa.me/919754742477" class="animation">9754742477</a>
+                            <i class="fa fa-thin fa-phone-volume fa-xl pd-5p" ></i>
+                        <p class="pdleft number animation">9754742477</p>
                     </div>
                     <div class="detail-flex">
-                        <a href="https://linkedin.com/in/ayush-nagar-front-end" class="lincicon animation">in</a> <a
-                            href="https://linkedin.com/in/ayush-nagar-front-end" class="animation">Linkedin</a>
+                        <a href="https://wa.me/919754742477">
+                            <i class="fa-brands fa-whatsapp fa-2xl" style="color: #14cb10;"></i>
+                        </a>
+                        <a href="https://wa.me/919754742477" class="animation">9754742477</a>
+                    </div>
+                    <div class="detail-flex">
+                        <a href="https://linkedin.com/in/ayush-nagar-front-end">
+                            <i class="fa-brands fa-linkedin fa-2xl" style="color: #005eff;"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/ayush-nagar-front-end" class="animation">Linkedin</a>
                     </div>
                 </details>
             </li>
@@ -394,13 +389,13 @@
         // animation 
         const animation = document.querySelectorAll('.animation');
         const options = {}
-        const observer = new IntersectionObserver(entries =>{
-            entries.forEach(entry =>{
-                entry.target.classList.toggle('anm',entry.isIntersecting);
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                entry.target.classList.toggle('anm', entry.isIntersecting);
                 console.log(entry)
             })
-        },options)
-        animation.forEach(animation =>{
+        }, options)
+        animation.forEach(animation => {
             observer.observe(animation)
         })
 
@@ -464,7 +459,7 @@
             const nextdays = document.getElementById('nextdays')
             const dobday = document.getElementById('dobday')
             const todayday = document.getElementById('todayday')
-            const whichday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','']
+            const whichday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', '']
             // const whichday = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
             const caldate = new Date();
 
