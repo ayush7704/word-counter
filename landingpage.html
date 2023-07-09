@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forall a tech</title>
     <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
-    <link rel="shortcut icon" href="/for all logo.jpeg" type="image/x-icon">
+    <link rel="shortcut icon" href="../javascript tutorial/for all logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,6 +25,10 @@
             scroll-behavior: smooth;
             overflow-x: hidden;
             scroll-padding-top: var(--scroll-padding);
+        }
+
+        a {
+            text-decoration: none;
         }
 
         nav {
@@ -92,7 +96,7 @@
             z-index: -1;
             left: 0;
             top: 0;
-            background: url(teamimg.jpg) no-repeat center/cover;
+            background: url(../images/gallery/01.jpg) no-repeat center/cover;
             filter: brightness(0.5);
         }
 
@@ -407,7 +411,7 @@
         .contactcontainer {
             background-color: #0a0f32;
             color: white;
-            padding: 15px 0;
+            padding: 15px 0 30px;
         }
 
         .contact {
@@ -442,6 +446,25 @@
             width: 90%;
             margin: 2% auto;
             font-size: 1.4rem;
+        }
+
+        .linksp {
+            font-size: 1rem;
+            text-transform: capitalize;
+            color: #00d0ff;
+            margin: 14px 0 10px;
+        }
+
+        .usefullinks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            font-size: 1rem;
+            gap: 0.2rem;
+            justify-content: space-evenly;
+        }
+
+        .usefullinks a {
+            color: white;
         }
 
 
@@ -551,9 +574,29 @@
             animation: updown 0.3s linear 0s 1 alternate forwards;
         }
 
-        /* .bluriff {
-           
-        } */
+        /*================= footer  =============*/
+        footer h5 {
+            padding: 15px;
+            text-align: center;
+            text-transform: uppercase;
+            background-color: #00d0ff;
+            color: #ffffffe8;
+        }
+
+        /*============== no-opning ================= */
+
+        .no-opning {
+            position: fixed;
+            bottom: 3.4rem;
+            left: 50%;
+            background: gray;
+            color: white;
+            transform: translate(-50%, -50%);
+            /* display: inline-block; */
+            padding: 10px;
+            text-transform: capitalize;
+            visibility: hidden;
+        }
 
         @keyframes slide {
             0% {
@@ -794,7 +837,7 @@
 
 <body>
     <nav>
-        <p><img src="for all logo.jpeg" class="logo" alt="logo"> ForAll a tech</p>
+        <p><img src="../javascript tutorial/for all logo.jpeg" class="logo" alt="logo"> ForAll a tech</p>
         <ul class="animation">
             <li><a href="#">Home</a></li>
             <li><a href="#about">About us</a></li>
@@ -802,7 +845,7 @@
             <li><a href="#team">Team</a></li>
             <li><a href="#ourmv">Mission and vision</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#career">Careers</a></li>
+            <li><a href="#career" class="careers">Careers</a></li>
         </ul>
         <h2 class="cros">
             <span class="span"></span>
@@ -838,7 +881,7 @@
                 </p>
             </div>
             <div class="aboutimg animation pd-5">
-                <img src="teampic.jpg" alt="team">
+                <img src="../javascript tutorial/teampic.jpg" alt="team">
             </div>
         </div>
         <div class="servicescontainer" id="services">
@@ -886,7 +929,7 @@
                 </div>
                 <div class="challengecolumn">
                     <div class="challenge animation">
-                        <img src="images/gallery/06.jpg" class="img" alt="">
+                        <img src="../images/gallery/06.jpg" class="img" alt="">
                         <div class="c">
                             <h3 class="color">Mission and vision</h3>
                             <p class="grey">Our Vision & Mission are both helping our team to achieve the goal. We
@@ -896,7 +939,7 @@
                         </div>
                     </div>
                     <div class="challenge animation">
-                        <img src="images/gallery/07.jpg" class="img" alt="">
+                        <img src="../images/gallery/07.jpg" class="img" alt="">
                         <div class="c">
                             <h3 class="color">Our challenges</h3>
                             <p class="grey">We take pride in helping our clients deliver marvelous results when it comes
@@ -906,7 +949,7 @@
                         </div>
                     </div>
                     <div class="challenge animation">
-                        <img src="images/gallery/04.jpg" class="img" alt="">
+                        <img src="../images/gallery/04.jpg" class="img" alt="">
                         <div class="c">
                             <h3 class="color">Meet our team</h3>
                             <p class="grey">Meet our institute leaders and the hard-working personalities who deliver
@@ -922,54 +965,54 @@
             <p>Our team is friendly, talkative, and fully reliable.</p>
             <div class="team">
                 <div class="members animation">
-                    <img src="team/01.jpg" alt="">
+                    <img src="../images/team/01.jpg" alt="">
                     <h4>Aaron Sharp</h4>
                     <p class="grey">Chief People Officer</p>
                 </div>
                 <div class="members animation">
-                    <img src="team/02.jpg" alt="">
+                    <img src="../images/team/02.jpg" alt="">
                     <h4>Homer Reyes</h4>
                     <p class="grey">Vice President</p>
                 </div>
-                <div class="members animation"><img src="team/03.jpg" alt="">
+                <div class="members animation"><img src="../images/team/03.jpg" alt="">
                     <h4>Felica Queen</h4>
                     <p class="grey">Team Leader</p>
                 </div>
-                <div class="members animation"><img src="team/04.jpg" alt="">
+                <div class="members animation"><img src="../images/team/04.jpg" alt="">
                     <h4>Sara Lisbon</h4>
                     <p class="grey">Production Manager</p>
                 </div>
-                <div class="members animation"><img src="team/05.jpg" alt="">
+                <div class="members animation"><img src="../images/team/05.jpg" alt="">
                     <h4>Michael Bean</h4>
                     <p class="grey">Quality control</p>
                 </div>
-                <div class="members animation"><img src="team/07.jpg" alt="">
+                <div class="members animation"><img src="../images/team/07.jpg" alt="">
                     <h4>Alice Williams</h4>
                     <p class="grey">Marketing manager</p>
                 </div>
-                <div class="members animation"><img src="team/06.jpg" alt="">
+                <div class="members animation"><img src="../images/team/06.jpg" alt="">
                     <h4>Paul Flavius</h4>
                     <p class="grey">Human resources</p>
                 </div>
                 <div class="members animation">
-                    <img src="team/08.jpg" alt="">
+                    <img src="../images/team/08.jpg" alt="">
                     <h4>Anne Smith</h4>
                     <p class="grey">Sales and Marketing</p2>
                 </div>
-                <div class="members animation"><img src="team/09.jpg" alt="">
+                <div class="members animation"><img src="../images/team/09.jpg" alt="">
                     <h4>Mellissa Doe</h4>
                     <p class="grey">Marketing Expert</p>
                 </div>
-                <div class="members animation"><img src="team/10.jpg" alt="">
+                <div class="members animation"><img src="../images/team/10.jpg" alt="">
                     <h4>Ben Aguilar</h4>
                     <p class="grey">Community</p>
                 </div>
-                <div class="members animation"><img src="team/11.jpg" alt="">
+                <div class="members animation"><img src="../images/team/11.jpg" alt="">
                     <h4>Kim Hamilton</h4>
                     <p class="grey">Developer</p>
                 </div>
                 <div class="members animation">
-                    <img src="teampic.jpg" alt="">
+                    <img src="../javascript tutorial/teampic.jpg" alt="">
                     <h4>rose</h4>
                     <p class="grey">Developer</p>
                 </div>
@@ -1073,9 +1116,24 @@
                             Madhya
                             Pradesh, India 462021</address>
                     </div>
+                    <div class="#">
+                        <p class="linksp">useful links</p>
+                        <div class="usefullinks">
+                            <a href="#about">About us</a>
+                            <a href="#services">services</a>
+                            <a href="#team">team</a>
+                            <a href="#ourmv">Mission and vision</a>
+                            <a href="#contact">contact</a>
+                            <a href="#" class="careers">Careers</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <footer>
+            <h5>ForAll a tech pvt lmt. </h5>
+        </footer>
+        <span class="no-opning">Sorry Currently No New Opnings</span>
     </div>
     <div class="bluriff"></div>
     <script>
@@ -1104,7 +1162,7 @@
                 navul.style.marginTop = `${navheight + 'px'}`
                 navul.style.display = 'block'
                 span.style.backgroundColor = 'transparent'
-                document.querySelector('.bluriff').style.cssText=`backdrop-filter: blur(6px); position: fixed;
+                document.querySelector('.bluriff').style.cssText = `backdrop-filter: blur(6px); position: fixed;
             width: 100%;
             height: 100%;
             overflow: hidden;
@@ -1121,7 +1179,7 @@
             else {
                 navul.style.display = ''
                 span.style.backgroundColor = ''
-                document.querySelector('.bluriff').style.cssText=''
+                document.querySelector('.bluriff').style.cssText = ''
                 document.documentElement.style.setProperty('--topheight', '-8px')
                 document.documentElement.style.setProperty('--bottomheight', '-8px')
                 document.documentElement.style.setProperty('--before', '0deg')
@@ -1132,7 +1190,7 @@
             Array.from(a).forEach((element) => {
                 element.addEventListener('click', function (e) {
                     span.style.backgroundColor = ''
-                    document.querySelector('.bluriff').style.cssText=''
+                    document.querySelector('.bluriff').style.cssText = ''
                     document.documentElement.style.setProperty('--topheight', '-8px')
                     document.documentElement.style.setProperty('--bottomheight', '-8px')
                     document.documentElement.style.setProperty('--before', '0deg')
@@ -1166,6 +1224,19 @@
             navheight = document.querySelector('nav').offsetHeight;
             document.documentElement.style.setProperty('--scroll-padding', navheight - 0.5 + 'px')
             console.log(navheight)
+        })
+
+        // careers 
+        document.querySelectorAll('.careers').forEach((elm) => {
+            elm.addEventListener('click', (e) => {
+                e.preventDefault()
+                setTimeout(() => {
+                    document.querySelector('.no-opning').style.cssText = 'visibility: visible;'
+                }, 400)
+                setTimeout(() => {
+                    document.querySelector('.no-opning').style.cssText = 'visibility: hidden;'
+                }, 1800)
+            })
         })
     </script>
 </body>

@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="shortcut icon" href="/ayushnagarlogo.jpeg" sizes="96x96" type="image/x-icon"> -->
+    <title>Ayush Nagar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins, sans-serif;
+        }
+
+        /* :root {
+            --theme-color: #0b021a;
+            --theme-text-color: #ffffff;
+        } */
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--scrolltop, 50px);
+        }
+
+        body {
+            color: var(--theme-text-color, #ffffff);
+            background: url(../portfolio/png.png) repeat scroll;
+            /* background-image: linear-gradient(109.6deg, rgba(104, 183, 249, 1) 31.3%, rgba(176, 248, 200, 1) 100.2%);
+            background-image: linear-gradient(111.5deg, rgba(163, 197, 230, 1) 1.4%, rgba(148, 150, 213, 1) 39.3%, rgba(159, 139, 208, 1) 68.4%, rgba(159, 121, 198, 1) 89.7%, rgba(157, 101, 203, 1) 99.9%); */
+        }
+
+        .bg {
+            background-color: var(--theme-color, #0b021a);
+        }
+
+        nav {
+            font-family: BUNGEE;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            color: var(--theme-text-color, #ffffff);
+            padding: 9px 15px;
+            font-size: 1.1rem;
+            background-color: #0b021a4f;
+            border-bottom: 1px solid gray;
+            backdrop-filter: blur(5px);
+            font-weight: bold;
+            z-index: 50;
+        }
+
+        nav h3:first-of-type {
+            padding-left: 4px;
+        }
+
+        .img-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+
+        a svg {
+            display: flex;
+        }
+
+        svg {
+            fill: white;
+            font-size: 49px;
+        }
+
+        .moon {
+            padding: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            list-style: none;
+            font-size: 0.8em;
+        }
+
+        nav ul:hover a {
+            color: #ffffffb8;
+        }
+
+        nav ul a:hover {
+            color: var(--theme-text-color, #ffffff);
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            padding: 8px;
+            color: var(--theme-text-color, #ffffff);
+            text-wrap: nowrap;
+            word-spacing: 2px;
+        }
+
+        ul,
+        li,
+        a {
+            transition: 0.5s;
+        }
+
+        .click {
+            display: none;
+            padding: 13px 0 13px 4px;
+        }
+
+        .click span {
+            position: relative;
+            display: block;
+        }
+
+        .click span,
+        .click span::before,
+        .click span::after {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .click span::before,
+        .click span::after {
+            content: '';
+            position: absolute;
+        }
+
+        .click span::before {
+            top: var(--spanbefore, -8px);
+            transform: rotate(var(--beforerotate, 0));
+        }
+
+        .click span::after {
+            bottom: var(--spanafter, -8px);
+            transform: rotate(var(--afterrotate, 0));
+        }
+
+        #blue {
+            display: inline-block;
+            padding-right: 4px;
+        }
+
+        .typed-cursor {
+            vertical-align: text-bottom;
+        }
+
+        .home,
+        .about {
+            padding: 10px;
+            font-size: 1.1em;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(var(--minwidth, 250px), 1fr));
+        }
+
+        .about {
+            padding: 15px;
+        }
+
+        .divs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 10px;
+            padding: 10px;
+            justify-content: center;
+        }
+
+
+        p:nth-of-type(1) mark:first-of-type {
+            font-size: 1.8rem;
+        }
+
+        .iconflex {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            padding: 0 70px;
+        }
+
+        .fa-2xl {
+            line-height: 1.03125em;
+        }
+
+        p:nth-of-type(3) mark:first-of-type,
+        p:nth-of-type(1) mark:first-of-type,
+        #blue {
+            color: rgba(205, 81, 216, 0.966);
+            background-color: transparent;
+        }
+
+        .divs:nth-of-type(1) img {
+            width: 70%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .divs:nth-of-type(1):hover img {
+            transform: scale(1.1);
+        }
+
+        .link a {
+            text-decoration: none;
+            background-color: var(--theme-color, #0b021a);
+            backdrop-filter: blur(4px);
+            width: 150px;
+            color: var(--theme-text-color, #ffffff);
+            border: 1px solid #80008082;
+            box-shadow: 0 0 6px -3px #fff3f3;
+            padding: 10px;
+            display: inline-block;
+            text-align: center;
+            flex-shrink: 1;
+        }
+
+        .divs .link {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .about {
+            gap: 10px;
+        }
+
+        .heading {
+            text-align: center;
+        }
+
+
+        /* #about .divs:nth-of-type(1) */
+        #about .divs {
+            padding: 35px;
+            backdrop-filter: blur(5px);
+            border-radius: 5px;
+            font-size: 17px;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            border: 1px solid gray;
+            background: linear-gradient(180deg, rgb(255 255 255 / 7%)41%, rgb(255 112 243 / 21%));
+        }
+
+        #about .divs:hover,
+        #about .divs a:hover {
+            transition: 0.3s;
+            border: 1px solid;
+        }
+
+        #about .divs h3 {
+            align-self: baseline;
+        }
+
+        .p10 {
+            padding: 10px 0;
+        }
+
+        #about .divs a {
+            text-decoration: none;
+            padding: 10px 17px;
+            background-color: var(--theme-color, #0b021a);
+            color: var(--theme-text-color, #ffffff);
+            border: 1px solid gray;
+            box-shadow: 0 0 6px -3px #fff3f3;
+            border-radius: 4px;
+            align-self: baseline;
+            display: inline-block;
+        }
+
+        .link a:hover,
+        .layer a:hover {
+            box-shadow: 0 0 4px 2px #fff3f3;
+            transition: 0.3s;
+        }
+
+        #about .divs ul {
+            list-style-position: inside;
+            list-style-type: disclosure-closed;
+        }
+
+        #about .divs ul {
+            text-indent: -2em;
+            padding-left: 2em;
+        }
+
+        #projects h2 {
+            text-align: center;
+        }
+
+        #projects h2 mark {
+            color: gainsboro;
+            background-color: transparent;
+        }
+
+        #about,
+        #projects {
+            padding: 1.5rem 0;
+        }
+
+        big {
+            font-size: 2rem;
+        }
+
+        big:last-of-type {
+            padding-left: 10rem;
+        }
+
+        .projects {
+            padding: 5rem;
+            gap: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .project {
+            flex: 0.3 1 250px;
+            border-radius: 10px;
+            background: beige;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            transition: 0.3s linear;
+        }
+
+        .projects img {
+            max-width: 100%;
+            object-fit: cover;
+            background: center/cover;
+            aspect-ratio: 5/5;
+            transition: 0.3s linear;
+        }
+
+        .project .layer {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            /* background-color: rgb(42 39 39 / 10%); */
+            background: var(--theme-color, #0b021a);
+            border: 1px solid;
+            backdrop-filter: blur(6px);
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: 0.5s linear;
+            opacity: 0;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        .project:hover .layer {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .layer h1 {
+            font-size: 1rem;
+        }
+
+        .layer a {
+            padding: 8px 19px;
+            background-color: var(--theme-color, #0b021a);
+            color: var(--theme-text-color, #ffffff);
+            border-radius: 4px;
+            text-decoration: none;
+            border: 1px solid;
+        }
+
+        .project:hover img {
+            transform: scale(1.1);
+        }
+
+        /*================ contact =================*/
+        .contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(var(--minwidth, 250px), 1fr));
+            padding: 1rem;
+            align-items: center;
+        }
+
+        .contact .heading {
+            font-size: 18px;
+            text-transform: capitalize;
+        }
+
+        .connect {
+            padding: 14px 14px 0;
+        }
+
+        .connect a {
+            text-decoration: none;
+            color: var(--theme-text-color, #ffffff);
+        }
+
+        .connectlink {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0
+        }
+
+        /*================ form  ==================*/
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 100%;
+        }
+
+        form input {
+            padding: 10px;
+            background-color: transparent;
+            color: var(--theme-text-color, #ffffff);
+            border-radius: 4px;
+            border: 1px solid;
+            width: 100%;
+            margin: 0 0 10px;
+            backdrop-filter: blur(3px);
+        }
+
+
+        input[type='submit'] {
+            background: #6eff00d9;
+            color: var(--theme-text-color, #ffffff);
+            border: none;
+            cursor: pointer;
+            box-shadow: -2px 5px 4px gray;
+            width: 50%;
+            margin: auto;
+        }
+
+        input[type='submit']:active {
+            transform: translate(0, 4px);
+            box-shadow: 0 1px 1px gray;
+        }
+
+        input::placeholder {
+            color: white;
+        }
+
+        /*================ copy to clipboard ================*/
+        .copytext {
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #80808094;
+            color: var(--theme-text-color, #ffffff);
+            display: none;
+            padding: 8px 12px;
+            font-size: 17px;
+            border-radius: 4px;
+            z-index: 50;
+            backdrop-filter: blur(15px);
+        }
+
+        /*================ animation ==================*/
+        .translateY {
+            transform: translateY(50px);
+            transition: 1s;
+            opacity: 0;
+        }
+
+        .translateY0 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /*========== footer =========*/
+        footer h4 {
+            text-align: center;
+            background-color: var(--theme-color, #0b021a);
+            color: var(--theme-text-color);
+            padding: 15px;
+            border-top: 1px solid;
+            margin-top: 1rem;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        @media screen and (width>1000px) {
+            .project {
+                flex: 0.2 1 350px;
+            }
+        }
+
+        @media screen and (max-width:750px) {
+            nav {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .iconflex {
+                padding: 0 25px;
+            }
+
+            .projects {
+                padding: 4rem;
+            }
+        }
+
+        @media screen and (max-width:570px) {
+            nav {
+                flex-direction: row;
+                z-index: 3;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                width: 100%;
+                height: auto;
+                left: 0;
+                padding: 15px;
+                transition: 1s linear;
+                top: var(--ultopmargin);
+                box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+                background-color: var(--theme-color, #0b021a);
+                z-index: 3;
+            }
+
+            nav ul li {
+                border-bottom: 1px solid white;
+                background: linear-gradient(45deg, #3c096c, #10002b);
+            }
+
+            nav ul li:hover {
+                background-color: black;
+            }
+
+            nav ul li a {
+                color: var(--theme-text-color, #ffffff);
+                padding: 8px;
+                display: block;
+            }
+
+            nav ul li:last-of-type {
+                border: none;
+            }
+
+            .click {
+                display: block;
+            }
+
+            .iconflex {
+                padding: 0 15px;
+            }
+
+            .projects {
+                padding: 3rem;
+            }
+
+        }
+
+        @media screen and (max-width:250px) {
+            big:last-of-type {
+                padding-left: 1rem;
+            }
+
+            .projects {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bluriff"></div>
+    <nav>
+        <h3 class="name">Ayush nagar</h3>
+        <a href="https://github.com/ayush7704">
+            <svg xmlns="http://www.w3.org/2000/svg" height="0.625em" viewBox="0 0 496 512">
+                <path
+                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+            </svg>
+        </a>
+        <i class="fa-solid fa-moon fa-xl moon" onclick="changemode('moon')" style="color: #ffffff;"></i>
+        <i class="fa-regular fa-sun fa-xl sun d-none" onclick="changemode('sun')" style="color: #ffffff;"></i>
+        <ul class="translateY">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#projects">PROJECTS</a> </li>
+            <li><a href="#contact">CONTACT ME</a></li>
+        </ul>
+        <h2 class="click">
+            <span class="span"></span>
+        </h2>
+    </nav>
+    <section class="home" id="home">
+        <div class="divs">
+            <img src="/portfolio/my photo.jpg" alt="myphoto" class="translateY">
+        </div>
+        <div class="divs translateY bg">
+            <p>Hey, my name is <br>
+                <mark class="white">Ayush Nagar.</mark>
+            </p>
+            <p class="center translateY">a passionate and skilled <span id="blue" class="white"></span></p>
+            <p class="center translateY">most of time i am busy in upskilling my <mark class="white">front-end skills.</mark> </p>
+
+            <p class="iconflex translateY">
+                <a href="https://wa.me/919754742477">
+                    <i class="fa-brands fa-whatsapp fa-2xl" style="color: #14cb10;"></i>
+                </a>
+                <a href="mailto:nagarayush570@gmail.com">
+                    <i class="fa-regular fa-envelope fa-2xl" style="color: #f2f2f2;"></i>
+                </a>
+                <a href="https://github.com/ayush7704">
+                    <i class="fa-brands fa-github fa-2xl" style="color: #ffffff;"></i>
+                </a>
+                <a href="https://linkedin.com/in/ayush-nagar-front-end">
+                    <i class="fa-brands fa-linkedin fa-2xl" style="color: #005eff;"></i>
+                </a>
+            </p>
+            <div class="link translateY">
+                <a href="#contact">Hire me <i class="fa-solid fa-right-to-bracket"></i></a>
+                <a href="ayushnagar.pdf" download>Download cv <i class="fa-solid fa-download downloadicon"></i></a>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <h3 class="heading translateY">ABOUT</h3>
+        <div class="about">
+            <div class="divs translateY">
+                <h3>About me</h3>
+                <p>Hello, i'm Ayush Nagar,a passionate and skilled UI and front-end
+                    developer based in Bhopal, Madhya Pradesh, India. With expertise in css and javascript.
+                    I'm addicted to creating visually stunning, user-freindly and , Responsive website's.
+                    I have 1 year of self learning experience in front-end development.
+                    I have learnt important useful fundamentals of front-end development now i feel confident about it.
+                </p>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="divs translateY">
+                <h3>About my skills</h3>
+                <P>I learnt very few technologies but i learnt them very focused.</P>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>BOOTSTRAP</li>
+                    <li>JAVASCRIPT</li>
+                    <li>GIT AND GITHUB</li>
+                    <li>RESPONSIVE DESIGN FOR ALL DEVICES</li>
+                    <li>GOOD COMMINUCATION</li>
+                </ul>
+                <div class="p10">
+                    <a href="#contact">Contact</a> <a href="https://wa.me/919754742477">Guide me! <i
+                            class="fa-brands fa-whatsapp fa-xl" style="color: #14cb10; padding-left: 2px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <h2 class="heading translateY bg"><big>SOME </big><mark>OF MY</mark><br> <big>WORK</big></h2>
+        <div class="projects">
+            <div class="project translateY">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80"
+                    alt="iimg">
+                <div class="layer">
+                    <h1>a simle age calculator that calculate the age and upcoming birthday day's</h1>
+                    <a href="https://ayushagecalculator.netlify.app">visit website <i
+                            class="fa fa-light fa-arrow-up-right-from-square fa-sm"
+                            style=`var(--theme-text-color)`></i></a>
+                </div>
+            </div>
+            <div class="project translateY">
+                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=455&q=80"
+                    alt="iimg">
+                <div class="layer">
+                    <h1>a landing page for an IT company</h1>
+                    <a href="https://ayushnagar.netlify.app">visit website <i
+                            class="fa fa-light fa-arrow-up-right-from-square fa-sm"
+                            style=`var(--theme-text-color)`></i></a>
+                </div>
+            </div>
+            <div class="project translateY">
+                <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1005&q=80"
+                    alt="iimg">
+                <div class="layer">
+                    <h1>a word and character counter</h1>
+                    <a href="https://ayushwordcounter.netlify.app">visit website <i
+                            class="fa fa-light fa-arrow-up-right-from-square fa-sm"
+                            style=`var(--theme-text-color)`></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- form  -->
+    <section id="contact">
+        <h2 class="heading translateY bg">CONTACT</h2>
+        <div class="contact">
+            <div class="usefullinks connect translateY">
+                <h3 class="heading white bg">Connect with me using these direct links</h3>
+                <div class="connectlink bg translateY">
+                    <i class="fa fa-thin fa-phone-volume fa-xl call" style=`var(--theme-text-color)`></i>
+                    <p class="call">9754742477</p>
+                </div>
+                <div class="connectlink bg translateY">
+                    <a href="https://wa.me/919754742477">
+                        <i class="fa-brands fa-whatsapp fa-2xl" style="color: #14cb10;"></i>
+                    </a>
+                    <p><a href="https://wa.me/919754742477">9754742477</a></p>
+                </div>
+                <div class="connectlink bg translateY">
+                    <a href="https://linkedin.com/in/ayush-nagar-front-end">
+                        <i class="fa-brands fa-linkedin fa-2xl" style="color: #005eff;"></i>
+                    </a>
+                    <p><a href="https://linkedin.com/in/ayush-nagar-front-end">Ayush Nagar </a></p>
+                </div>
+                <div class="connectlink bg translateY">
+                    <a href="mailto:nagarayush570@gmail.com">
+                        <i class="fa-regular fa-envelope fa-2xl" style=`var(--theme-text-color)`></i>
+                    </a>
+                    <p><a href="mailto:nagarayush570@gmail.com">nagarayush570@gmail.com</a></p>
+                </div>
+            </div>
+            <form action="https://formsubmit.co/nagarayush570@gmail.com" method="post" class="connect translateY">
+                <label for="name" class="bg">Your Name</label>
+                <input type="text" name="name" id="name" placeholder="NAME" autocomplete="" required>
+                <label for="email" class="bg">Email Address</label>
+                <input type="email" name="email" id="email" placeholder="EMAIL" autocomplete="" required>
+                <label for="Esubject" class="bg">Email Subject</label>
+                <input type="text" name="emailsubject" id="Esubject" placeholder="Subject" required>
+                <label for="number" class="bg">Mobile Number</label>
+                <input type="number" name="number" min="10" id="number" placeholder="Number" autocomplete="" required>
+                <input type="submit" value="Send Message">
+            </form>
+        </div>
+    </section>
+    <div class="copytext">Copied</div>
+    <footer>
+        <h4>ayushnagar-portfolio</h4>
+        <footer>
+
+            <!-- ========= typed.js cdn ========== -->
+            <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+            <script>
+                //========= Setup and start animation of typed.js 
+                const typed = new Typed('#blue', {
+                    strings: ['Front-end developer.', 'UI developer', 'Coder.'],
+                    startDelay: 1100,
+                    typeSpeed: 100,
+                    backSpeed: 100,
+                    backDelay: 1000,
+                    showCursor: true,
+                    cursorChar: '|',
+                    autoInsertCss: true,
+                    loop: true
+                });
+
+
+
+                //========  navbar hamburgue  ===========
+                const click = document.querySelector('.click');
+                click.addEventListener('click', function () {
+                    const nav = document.querySelector('nav').offsetHeight;
+                    const span = document.querySelector('.span');
+                    const navul = document.querySelector('nav ul');
+                    const clickspan = document.querySelector('.click span')
+                    const h2before = window.getComputedStyle(clickspan, '::before')
+                    const h2bafter = window.getComputedStyle(clickspan, '::after')
+
+                    if (h2before.top == '-8px') {
+                        navul.style.cssText = `display:block;`
+                        clickspan.style.background = 'transparent'
+                        document.querySelector('.bluriff').style.cssText = `backdrop-filter: blur(6px); position: fixed;width: 100%;height: 100%; overflow: hidden;top: 0px; left: 0;z-index: 2;`
+
+                        document.documentElement.style.setProperty('--ultopmargin', `${nav}px`)
+                        document.documentElement.style.setProperty('--spanbefore', `0px`)
+                        document.documentElement.style.setProperty('--spanafter', `0px`)
+                        document.documentElement.style.setProperty('--beforerotate', `135deg`)
+                        document.documentElement.style.setProperty('--afterrotate', `-135deg`)
+                    } else {
+                        navul.style.cssText = ``
+                        clickspan.style.background = ''
+                        document.querySelector('.bluriff').style.cssText = ''
+                        document.documentElement.style.setProperty('--ultopmargin', ``)
+                        document.documentElement.style.setProperty('--spanbefore', `-8px`)
+                        document.documentElement.style.setProperty('--spanafter', `-8px`)
+                        document.documentElement.style.setProperty('--beforerotate', `0deg`)
+                        document.documentElement.style.setProperty('--afterrotate', `0deg`)
+                    }
+
+                    const links = document.querySelectorAll('nav ul li a');
+                    Array.from(links).forEach((link) => {
+                        link.addEventListener('click', () => {
+                            navul.style.cssText = ``
+                            clickspan.style.background = ''
+                            document.querySelector('.bluriff').style.cssText = ''
+                            document.documentElement.style.setProperty('--ultopmargin', ``)
+                            document.documentElement.style.setProperty('--spanbefore', `-8px`)
+                            document.documentElement.style.setProperty('--spanafter', `-8px`)
+                            document.documentElement.style.setProperty('--beforerotate', `0deg`)
+                            document.documentElement.style.setProperty('--afterrotate', `0deg`)
+                        })
+                    })
+                })
+
+
+                //========= on resize ===========
+                const navwidth = document.querySelector('nav');
+                document.documentElement.style.setProperty('--scrolltop', navwidth.offsetHeight + 'px')
+                window.addEventListener('resize', () => {
+                    document.documentElement.style.setProperty('--scrolltop', navwidth.offsetHeight + 'px')
+                    if (navwidth.offsetWidth <= '250') {
+                        document.documentElement.style.setProperty('--minwidth', `${navwidth.offsetWidth - 20 + 4 - 3}` + 'px')
+                        console.log(navwidth.offsetWidth + 4)
+                        // document.documentElement.style.setProperty('--minwidth', `${navwidth}`+ 4 +'px')
+                    }
+                })
+
+                //====== onscroll down to up animation ======= 
+                const translateY = document.querySelectorAll('.translateY')
+                const options = {
+                    threshold: 0,
+                    rootMargin: '-10px 0px 0px 0px'
+                }
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        entry.target.classList.toggle('translateY0', entry.isIntersecting)
+                    })
+                }, options)
+                translateY.forEach((trsy) => {
+                    observer.observe(trsy)
+                })
+
+                //============= copy to clipboard  =================
+                const copy = document.getElementsByClassName('call');
+                Array.from(copy).forEach(event => {
+                    event.addEventListener('click', (e) => {
+                        e.preventDefault()
+                        navigator.clipboard.writeText(9754742477)
+                        setTimeout(() => {
+                            document.querySelector('.copytext').style.display = 'block'
+                        }, 100)
+                        setTimeout(() => {
+                            document.querySelector('.copytext').style.display = 'none'
+                        }, 1000)
+                    })
+                })
+
+                function changemode(e) {
+                    if (e == 'moon') {
+                        document.documentElement.style.setProperty('--theme-color', '#ffffff')
+                        document.documentElement.style.setProperty('--theme-text-color', '#000000')
+                        document.querySelector('.moon').style.display = 'none'
+                        document.querySelector('.sun').style.display = 'block'
+                        document.body.style.cssText = '    background-image: linear-gradient(111.5deg, rgb(163, 197, 230) 1.4%, rgb(148, 150, 213) 39.3%, rgb(159, 139, 208) 68.4%, rgb(159, 121, 198) 89.7%, rgb(157, 101, 203) 99.9%);'
+                        document.querySelector('.name').style.color = 'white'
+                        document.querySelector('#projects h2 mark').style.color = 'white'
+                        document.querySelectorAll('.bg').forEach(element => {
+                            element.style.cssText = 'background-color:transparent;'
+                        });
+                        document.querySelectorAll('.white').forEach(element => {
+                            element.style.cssText = 'color:white;background-color:transparent;'
+
+                        });
+                        if (document.body.offsetWidth <= '570') {
+                            document.querySelectorAll('nav ul li a').forEach(element => {
+                                element.style.cssText = 'background-image: linear-gradient(111.5deg, rgb(163, 197, 230) 1.4%, rgb(148, 150, 213) 39.3%, rgb(159, 139, 208) 68.4%, rgb(159, 121, 198) 89.7%, rgb(157, 101, 203) 99.9%);color:white'
+                            });
+                        } else {
+                            document.querySelectorAll('nav ul li a').forEach(element => {
+                                element.style.cssText = 'color:white'
+                            });
+                        }
+                    }
+                    else {
+                        document.documentElement.style.setProperty('--theme-color', '')
+                        document.documentElement.style.setProperty('--theme-text-color', '')
+                        document.querySelector('.sun').style.display = 'none'
+                        document.querySelector('.moon').style.display = 'block'
+                        document.body.style.cssText = ''
+                        document.querySelector('#projects h2 mark').style.color = ''
+                        document.querySelector('.name').style.color = ''
+                        document.querySelectorAll('.bg').forEach(element => {
+                            element.style.cssText = ''
+                        });
+                        document.querySelectorAll('.white').forEach(element => {
+                            element.style.cssText = ''
+                        });
+                        document.querySelectorAll('nav ul li a').forEach(element => {
+                            element.style.cssText = ''
+                        });
+                    }
+                }
+
+            </script>
+</body>
+
+</html>
