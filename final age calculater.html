@@ -225,9 +225,11 @@
         .underline {
             text-decoration: underline !important;
         }
-        .pd-5p{
+
+        .pd-5p {
             padding-left: 5px;
         }
+
         .mb5px {
             margin: 5px 0;
         }
@@ -238,9 +240,10 @@
             align-items: center;
         }
 
-        .pdleft{
+        .pdleft {
             padding: 5px 5px 5px 12px;
         }
+
         .p5px {
             padding: 5px;
         }
@@ -317,7 +320,7 @@
                         <a href="mailto:nagarayush570@gmail.com" class="underline animation">nagarayush570@gmail.com</a>
                     </div>
                     <div class="detail-flex">
-                            <i class="fa fa-thin fa-phone-volume fa-xl pd-5p" ></i>
+                        <i class="fa fa-thin fa-phone-volume fa-xl pd-5p"></i>
                         <p class="pdleft number animation">9754742477</p>
                     </div>
                     <div class="detail-flex">
@@ -385,8 +388,25 @@
         </h3>
     </div>
     <div class="radial animation"></div>
+
+    <!--============ gsap cdn ============== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
-        // animation 
+        // gsap animation
+          const tm = gsap.timeline()
+                tm.from('header h4,.click', {
+                    y: -100,
+                    duration: 1,
+                    delay: 0.4,
+                    opacity: 0,
+                    fontSize: '1.3rem',
+                    stagger: 0.3
+                })
+
+        //our animation 
         const animation = document.querySelectorAll('.animation');
         const options = {}
         const observer = new IntersectionObserver(entries => {
@@ -405,6 +425,7 @@
             element.addEventListener('click', function (e) {
                 navigator.clipboard.writeText(9754742477)
                 setTimeout(() => {
+
                     document.querySelector('.copy').style.display = 'block'
                 }, 100)
                 setTimeout(() => {
@@ -496,7 +517,7 @@
 
                 dobday.innerHTML = whichday[dob.getDay()]
                 todayday.innerHTML = whichday[tilldate.getDay()]
-                
+
                 console.log(dob.getDate())
                 console.log(tilldate.getDate())
 
